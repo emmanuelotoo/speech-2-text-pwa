@@ -14,7 +14,7 @@ export default function MicControls({
       <h2 className="font-medium">Microphone</h2>
       {!isSupported && (
         <div className="text-sm text-rose-700 bg-rose-50 border border-rose-200 p-3 rounded">
-          Your browser does not support the Web Speech API. You can still type, or upload an audio file for server-side transcription.
+          Your browser does not support the Web Speech API.
         </div>
       )}
 
@@ -62,16 +62,6 @@ export default function MicControls({
           />
         </div>
       </div>
-
-      <details className="bg-slate-50 p-3 rounded text-sm">
-        <summary className="cursor-pointer select-none">Server-side transcription (fallback)</summary>
-        <div className="mt-2 space-y-2">
-          <input type="file" accept="audio/*" className="block w-full text-sm" onChange={() => alert('Demo: implement upload in utils/serverStt.js')} />
-          <p className="text-slate-600 text-xs">
-            For production-grade accuracy, connect Whisper or a cloud STT provider. See README for details.
-          </p>
-        </div>
-      </details>
     </div>
   );
 }

@@ -1,13 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import MicControls from './components/MicControls.jsx';
 import TranscriptView from './components/TranscriptView.jsx';
-import InstallPrompt from './components/InstallPrompt.jsx';
 import { useSpeechRecognition } from './utils/useSpeechRecognition.js';
 import { saveTranscript, loadTranscript } from './utils/storage.js';
 import { copyToClipboard, downloadText } from './utils/io.js';
 
 export default function App() {
-  const [language, setLanguage] = useState('en-US');
+  const language = 'en-US';
   const [segments, setSegments] = useState([]); // { text, confidence?, timestampMs, isFinal }
   const [isHydrated, setIsHydrated] = useState(false);
 
@@ -56,23 +55,6 @@ export default function App() {
             <div className="w-8 h-8 rounded-md bg-sky-500 text-white grid place-items-center font-bold">S</div>
             <h1 className="text-lg font-semibold">SpeakWrite</h1>
           </div>
-          <div className="flex items-center gap-3">
-            <label className="text-sm text-slate-600" htmlFor="lang">Language</label>
-            <select
-              id="lang"
-              className="px-2 py-1 border rounded-md text-sm"
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              aria-label="Recognition language"
-            >
-              <option value="en-US">English (US)</option>
-              <option value="en-GB">English (UK)</option>
-              <option value="en-IN">English (India)</option>
-              <option value="es-ES">Spanish (Spain)</option>
-              <option value="fr-FR">French</option>
-              <option value="de-DE">German</option>
-            </select>
-          </div>
         </div>
       </header>
 
@@ -119,8 +101,6 @@ export default function App() {
               </button>
             </div>
           </div>
-
-          <InstallPrompt />
 
           <details className="bg-white rounded-lg shadow-sm border p-4">
             <summary className="cursor-pointer select-none font-medium">Debug Panel</summary>
